@@ -2,8 +2,9 @@ import React, { ChangeEvent, FC, useState } from 'react'
 import { FiX } from 'react-icons/fi';
 import { useTypedDispatch } from '../../../hooks/redux';
 import { v4 } from 'uuid';
-import { addList } from '../../../store/slices/boardsSlice';
+import { addList, addTask } from '../../../store/slices/boardsSlice';
 import { addLog } from '../../../store/slices/loggerSlice';
+import { button, close, input } from './DropDownForm.css';
 
 type TDropDownFromProps = {
   boardId: string;
@@ -52,14 +53,16 @@ const DropDownForm: FC<TDropDownFromProps> = ({
         )
       } else {
         dispatch(
-          boardId,
-          listId,
-          task: {
-            taskId: v4(),
-            taskName: text,
-            taskDescription: "",
-            taskOwner: "User"
-          }
+          addTask({
+            boardId,
+            listId,
+            task: {
+              taskId: v4(),
+              taskName: text,
+              taskDescription: "",
+              taskOwner: "User"
+            }
+          })
         )
 
         dispatch(
@@ -77,6 +80,7 @@ const DropDownForm: FC<TDropDownFromProps> = ({
   return (
     <div>
       <textarea
+        className={input}
         value={text}
         onChange={handleTextChange}
         autoFocus
@@ -84,10 +88,12 @@ const DropDownForm: FC<TDropDownFromProps> = ({
         onBlur={() => setIsFormOpen(false)}
       />
       <div>
-        <button onMouseDown={handleButtonClick}>
+        <button
+          className={button}
+          onMouseDown={handleButtonClick}>
           {buttonTitle}
         </button>
-        <FiX />
+        <FiX className={close} />
       </div>
     </div>
   )
