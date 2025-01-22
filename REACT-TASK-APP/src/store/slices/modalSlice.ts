@@ -1,5 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { ITask } from "../../types/index.ts";
+import { PayloadAction } from "@reduxjs/toolkit";
+
+type TsetModalDataAction = {
+    boardId: string;
+    listId: string;
+    task: ITask;
+}
 
 type TModalState = {
     boardId: string;
@@ -22,8 +29,13 @@ const modalSlice = createSlice({
     name: 'modal',
     initialState,
     reducers: {
-
+        setModalData: (state, {payload}: PayloadAction<TsetModalDataAction>) => {
+            state.boardId = payload.boardId;
+            state.listId = payload.listId;
+            state.task = payload.task;
+        }
     }
 })
 
+export const { setModalData } = modalSlice.actions;
 export const modalReducer = modalSlice.reducer;
