@@ -11,6 +11,7 @@ import { ITask } from '../../types'
 import { setModalData } from '../../store/slices/modalSlice'
 import { setModalActive } from '../../store/slices/boardsSlice'
 import { listWrapper, name, header, deleteButton } from './List.css'
+import { Droppable } from 'react-beautiful-dnd'
 
 type TListProps = {
   boardId: string;
@@ -47,7 +48,11 @@ const List: FC<TListProps> = ({
   }
 
   return (
-    <div
+    <Droppable droppableId={list.listId}>
+      {provided => (
+        <div
+          {...provided.droppableProps}
+          ref={provided.innerRef}
       className={listWrapper}
     >
       <div className={header}>
@@ -71,12 +76,15 @@ const List: FC<TListProps> = ({
           />
           </div>
           ))
-        }
+          }
+          {provided.placeholder}
       <ActionButton
         boardId={boardId}
         listId={list.listId}
       />
-    </div>
+        </div>
+        )}
+    </Droppable>
   )
 }
 
