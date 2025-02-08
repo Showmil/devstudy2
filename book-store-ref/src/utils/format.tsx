@@ -1,3 +1,9 @@
-export const formatNumber = (number: number) => {
-    return number.toLocaleString();
-}
+import dayjs from "dayjs";
+
+export const formatNumber = (number: number): string => {
+  return number.toLocaleString();
+};
+
+export const formatDate = (date: string, format?: string): string => {
+  return dayjs(date).format(format ? format : "YYYY MM DD");
+};
