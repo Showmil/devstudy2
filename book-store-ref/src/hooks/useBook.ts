@@ -10,7 +10,7 @@ export const useBook = (bookId: string | undefined) => {
     const [book, setBook] = useState<BookDetail | null>(null);
     const [cartAdded, setCardAdded] = useState(false);
     const { isloggedIn } = useAuthStore();
-    const showAlert = useAlert();
+    const { showAlert } = useAlert();
 
     const likeToggle = () => {
     // 로그인 확인

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from "styled-components";
-import Title from "../components/common/title";
+import Title from "../components/common/Title";
 import InputText from '../components/common/inputText';
 import Button from '../components/common/Button';
 import { Link, useNavigate } from 'react-router-dom';
@@ -16,7 +16,7 @@ export interface SignupProps {
 
 function Login() {
     const navigate = useNavigate();
-    const showAlert = useAlert()
+    const { showAlert } = useAlert()
 
     const {
         register,
