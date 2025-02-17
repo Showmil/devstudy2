@@ -7,6 +7,11 @@ import { GlobalStyle } from './style/global';
 import { ThemeContext } from 'styled-components';
 import { state } from './context/themeContext';
 
+if (process.env.NODE_ENV === "development") {
+  const { worker } = require("./mock/browser");
+  worker.start();
+}
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
