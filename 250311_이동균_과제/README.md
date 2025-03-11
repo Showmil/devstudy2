@@ -1,0 +1,12 @@
+## npm을 통한 오픈소스 배포
+- npm 공식 사이트에서 계정 생성
+- 터미널에서 login 명령어를 통해 로그인
+- 프로젝트 루트 디렉토리에서 npm init을 이용해 package.json 생성
+- 이름, 버전, 설명, 라이선스, 저장소 URL 등 필요한 정보 기입
+- 실제 코드 작성 후 필요한 의존성 package.json에 추가
+- README.md 파일을 작성해 패키지 사용법, 기능, 설치 방법 등 문서화
+- .gitignore 및 .npmignore을 사용해 불필요한 파일 포함하지 않도록 관리
+- package.json에 main 필드를 포함해 진입점 지정
+- 터미널에서 프로젝트 루트로 이동한 후 npm publish 명령어 실행
+- 배포 전 버전이 올바른 지 확인하고 이미 배포된 버전과 충돌이 없도록 버전 관리 신경쓰기
+- 코드 업데이트가 필요하면 package.json의 버전을 SemVer에 맞게 수정하고 다시 npm publish
